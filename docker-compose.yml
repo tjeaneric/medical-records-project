@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  api:
+    image: medical-records-api
+    build:
+      context: ./medical-records-api
+    ports:
+      - 3000:3000
+    restart: always
+
+  middleware:
+    image: medical-records-middleware
+    build:
+      context: ./Medical-records-middleware
+    ports:
+      - 4000:4000
+    restart: always
+    depends_on:
+      - api
